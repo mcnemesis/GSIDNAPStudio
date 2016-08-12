@@ -1,4 +1,4 @@
-Formbuilder.registerField 'section_break',
+Formbuilder.registerField 'show_info',
 
   order: 0
 
@@ -17,5 +17,5 @@ Formbuilder.registerField 'section_break',
   """
 
   addButton: """
-    <span class='symbol'><span class='fa fa-minus'></span></span> Section Break
+    <span class='symbol'><span class='fa fa-info'></span></span> Show Info
   """

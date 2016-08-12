@@ -377,6 +377,7 @@ class Formbuilder
     mappings:
       SIZE: 'field_options.size'
       UNITS: 'field_options.units'
+      MIME_TYPE: 'field_options.mime_type'
       LABEL: 'label'
       FIELD_TYPE: 'field_type'
       REQUIRED: 'required'

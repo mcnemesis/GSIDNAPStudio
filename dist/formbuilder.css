@@ -74,3 +74,5 @@ body{background-color:#444;font-family:sans-serif}
 .fb-main{background-color:#fff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;min-height:600px}
 input[type=text]{margin-bottom:3px}
 select{margin-bottom:5px;font-size:40px}
+.section-image{height:200px;width:auto}
+.section-image.image-control{height:100px;width:auto}
