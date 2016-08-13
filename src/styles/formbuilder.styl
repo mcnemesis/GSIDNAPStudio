@@ -1,6 +1,7 @@
 $prim-color = #1abc9c
 $sec-color = #16a085
 $header-bg-color = rgba(255, 250, 158, 1)
+$preview-bg-color = rgba(56, 45, 52, 1)
 $footer-bg-color = rgba(221, 221, 221, 1)
 $page-bg-color = #444;
 $editor-bg-color = #fff;
@@ -9,6 +10,12 @@ border-radius()
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
   border-radius: arguments
+
+box-shadow()
+    -webkit-box-shadow: arguments
+    -moz-box-shadow: arguments
+    box-shadow: arguments
+
 
 $affirmitive-color = #2ecc71
 $negative-color = #e74c3c
@@ -173,7 +180,17 @@ position: absolute;
 }
 
 .fb-response-fields {
-  padding-bottom: 150px;
+    padding: 10px;
+    border-radius: 6px;
+    padding-bottom: 150px;
+    background-color: $preview-bg-color;
+    color: invert($preview-bg-color);
+    box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.75);
+    margin: 10px;
+}
+
+.fb-response-fields .editing {
+    color: invert($editing-bg);
 }
 
 .fb-response-fields a.sortable-placeholder {
@@ -492,4 +509,20 @@ $nlogo_w_to_h_ratio = 1.4352941176470588
     width: @height * $nlogo_w_to_h_ratio;
     display: inline-block;
     background-size: @width @height;
+}
+
+.fb-publish-wrapper {
+    padding: 10px;
+    background-color: lighten($sec-color, 50%);
+    border-radius(6px);
+    box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.75);
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.code {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 10px;
 }

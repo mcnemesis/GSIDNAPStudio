@@ -20,7 +20,8 @@ header h1{display:inline-block;position:absolute}
 .fb-add-field-types a{font-size:13px;display:inline-block;width:48.5%;background-color:#1abc9c;margin-bottom:9px;box-sizing:border-box}
 .fb-add-field-types a:nth-child(odd){margin-right:3%}
 .fb-add-field-types a .symbol{opacity:.6;margin:0 .25em 0 -1em}
-.fb-response-fields{padding-bottom:150px}
+.fb-response-fields{padding:10px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding-bottom:150px;background-color:#382d34;color:#c7d2cb;-webkit-box-shadow:0 0 9px 1px rgba(0,0,0,0.75);-moz-box-shadow:0 0 9px 1px rgba(0,0,0,0.75);box-shadow:0 0 9px 1px rgba(0,0,0,0.75);margin:10px}
+.fb-response-fields .editing{color:#130f0e}
 .fb-response-fields a.sortable-placeholder{display:block;border:1px dashed #ddd;min-height:80px;height:80px;width:100%}
 .fb-field-wrapper{cursor:pointer;position:relative;margin-bottom:20px}
 .fb-field-wrapper input{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;border:thin solid #ddd}
@@ -78,3 +79,5 @@ select{margin-bottom:5px;font-size:40px}
 .section-image.image-control{height:100px;width:auto}
 footer{max-width:1000px;margin:0 auto;padding:0 20px 0 0;position:relative;font-family:'Source Sans Pro','Open Sans',Tahoma;background-color:#ddd;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding:10px;margin-top:10px}
 .logo-nuchwezi{background-image:url("../img/logo-nuchwezi.png");height:60px;width:86.11764705882354px;display:inline-block;background-size:86.11764705882354px 60px}
+.fb-publish-wrapper{padding:10px;background-color:#6febd3;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0 9px 1px rgba(0,0,0,0.75);-moz-box-shadow:0 0 9px 1px rgba(0,0,0,0.75);box-shadow:0 0 9px 1px rgba(0,0,0,0.75);margin:10px;margin-top:20px}
+.code{background-color:#fff;padding:20px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;margin-top:10px}

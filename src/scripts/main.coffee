@@ -153,6 +153,8 @@ class BuilderView extends Backbone.View
     @collection.bind 'destroy add reset', @hideShowNoResponseFields, @
     @collection.bind 'destroy', @ensureEditViewScrolled, @
 
+
+
     @render()
     @collection.reset(@bootstrapData)
     @bindSaveEvent()
@@ -161,6 +163,15 @@ class BuilderView extends Backbone.View
     @formSaved = true
     @saveFormButton = @$el.find(".js-save-form")
     @saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED)
+
+    $('#app-name, #app-color').change =>
+        @formSaved = false
+        @saveForm.call(@)
+
+    $('#js-publish-form').click =>
+        @formSaved = false
+        window.publish = true
+        @saveForm.call(@)
 
     unless !Formbuilder.options.AUTOSAVE
       setInterval =>
@@ -332,7 +343,11 @@ class BuilderView extends Backbone.View
     @formSaved = true
     @saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED)
     @collection.sort()
-    payload = JSON.stringify fields: @collection.toJSON()
+    payload = JSON.stringify
+            app:
+                name: $('#app-name').val()
+                color: $('#app-color').val()
+            fields: @collection.toJSON()
 
     if Formbuilder.options.HTTP_ENDPOINT then @doAjaxSave(payload)
     @formBuilder.trigger 'save', payload
@@ -369,6 +384,8 @@ class Formbuilder
 
   @options:
     BUTTON_CLASS: 'fb-button'
+    APP_NAME_CLASS: 'fb-app-name'
+    APP_COLOR_CLASS: 'fb-app-color'
     HTTP_ENDPOINT: ''
     HTTP_METHOD: 'POST'
     AUTOSAVE: true
@@ -397,6 +414,9 @@ class Formbuilder
       ALL_CHANGES_SAVED: 'All changes saved'
       SAVE_FORM: 'Save form'
       UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!'
+      SET_APP_NAME: 'App Name...'
+      SET_APP_COLOR: '#Main App Color'
+      PUBLISH_APP: 'Publish The Persona'
 
   @fields: {}
   @inputFields: {}

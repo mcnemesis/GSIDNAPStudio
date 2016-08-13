@@ -293,6 +293,15 @@
       this.formSaved = true;
       this.saveFormButton = this.$el.find(".js-save-form");
       this.saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED);
+      $('#app-name, #app-color').change(function() {
+        _this.formSaved = false;
+        return _this.saveForm.call(_this);
+      });
+      $('#js-publish-form').click(function() {
+        _this.formSaved = false;
+        window.publish = true;
+        return _this.saveForm.call(_this);
+      });
       if (!!Formbuilder.options.AUTOSAVE) {
         setInterval(function() {
           return _this.saveForm.call(_this);
@@ -513,6 +522,10 @@
       this.saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED);
       this.collection.sort();
       payload = JSON.stringify({
+        app: {
+          name: $('#app-name').val(),
+          color: $('#app-color').val()
+        },
         fields: this.collection.toJSON()
       });
       if (Formbuilder.options.HTTP_ENDPOINT) {
@@ -567,6 +580,8 @@
 
     Formbuilder.options = {
       BUTTON_CLASS: 'fb-button',
+      APP_NAME_CLASS: 'fb-app-name',
+      APP_COLOR_CLASS: 'fb-app-color',
       HTTP_ENDPOINT: '',
       HTTP_METHOD: 'POST',
       AUTOSAVE: true,
@@ -593,7 +608,10 @@
       dict: {
         ALL_CHANGES_SAVED: 'All changes saved',
         SAVE_FORM: 'Save form',
-        UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!'
+        UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!',
+        SET_APP_NAME: 'App Name...',
+        SET_APP_COLOR: '#Main App Color',
+        PUBLISH_APP: 'Publish The Persona'
       }
     };
 
@@ -1111,11 +1129,35 @@ __p += '<div class=\'fb-left\'>\n  <ul class=\'fb-tabs\'>\n    <li class=\'activ
 return __p
 };
 
+this["Formbuilder"]["templates"]["partials/publish"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class=\'fb-publish-wrapper\'>\n  <input type="text" id=\'app-name\' class=\'' +
+((__t = ( Formbuilder.options.APP_NAME_CLASS )) == null ? '' : __t) +
+'\' placeholder=\'' +
+((__t = ( Formbuilder.options.dict.SET_APP_NAME )) == null ? '' : __t) +
+'\'></input>\n  <input type="text" id=\'app-color\' class=\'' +
+((__t = ( Formbuilder.options.APP_COLOR_CLASS )) == null ? '' : __t) +
+'\' placeholder=\'' +
+((__t = ( Formbuilder.options.dict.SET_APP_COLOR )) == null ? '' : __t) +
+'\'></input>\n  <button id=\'js-publish-form\' class=\'' +
+((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
+'\'>' +
+((__t = ( Formbuilder.options.dict.PUBLISH_APP )) == null ? '' : __t) +
+'</button>\n    <div id="code" class="code"></div>\n</div>\n';
+
+}
+return __p
+};
+
 this["Formbuilder"]["templates"]["partials/right_side"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-right\'>\n  <div class=\'fb-no-response-fields\'>No response fields</div>\n  <div class=\'fb-response-fields\'></div>\n</div>\n';
+__p += '<div class=\'fb-right\'>\n  <div class=\'fb-no-response-fields\'>No response fields</div>\n  <div class=\'fb-response-fields\'></div>\n  ' +
+((__t = ( Formbuilder.templates['partials/publish']() )) == null ? '' : __t) +
+'\n</div>\n';
 
 }
 return __p
@@ -1127,7 +1169,7 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-save-wrapper\'>\n  <button class=\'js-save-form ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
-'\'></button>\n</div>';
+'\'></button>\n</div>\n';
 
 }
 return __p

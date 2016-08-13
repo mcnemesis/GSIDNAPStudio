@@ -33,50 +33,27 @@
         </footer>
 
         <script src="vendor/js/vendor.js"></script>
+        <script src="vendor/js/qrcode.js"></script>
+        <script src="vendor/js/jquery.qrcode.js"></script>
         <script src="dist/formbuilder.js"></script>
 
         <script>
 
-            var existingForm = [
-            {
-                "label": "Do you have a website?",
-                "field_type": "website",
-                "required": false,
-                "field_options": {},
-                "cid": "c1"
-            },
-            {
-                "label": "Please enter your clearance number",
-                "field_type": "text",
-                "required": true,
-                "field_options": {},
-                "cid": "c6"
-            },
-            {
-                "label": "Security personnel #82?",
-                "field_type": "radio",
-                "required": true,
-                "field_options": {
-                    "options": [{
-                        "label": "Yes",
-                        "checked": false
-                    }, {
-                        "label": "No",
-                        "checked": false
-                    }],
-                        "include_other_option": true
-                },
-                "cid": "c10"
-            },
-            {
-                "label": "Medical history",
-                "field_type": "file",
-                "required": true,
-                "field_options": {},
-                "cid": "c14"
-            }
-            ];
 
+var defaultQRCODE_SIZE = 200;
+var defaultQRCODE_EXPORT_SIZE = 500;
+var defaultEXPORT_SIZE_H = 400;
+var defaultEXPORT_SIZE_W = 1000;
+
+function make_qrcode(selector,data,size){
+    $(selector).empty();
+    $(selector).qrcode({
+        render: 'canvas',
+        width: size,
+        height: size,
+        text: data
+    });
+}
             $(function(){
                 fb = new Formbuilder({
                     selector: '.fb-main',
@@ -85,6 +62,10 @@
 
                 fb.on('save', function(payload){
                     console.log(payload);
+                    if(window.publish){
+                        make_qrcode('#code',JSON.stringify(payload), defaultQRCODE_EXPORT_SIZE);
+                        window.publish = false;
+                    }
                 })
             });
         </script>
