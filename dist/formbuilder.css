@@ -2,8 +2,8 @@
 .fb-button[disabled]{background:#ddd !important;border:thin solid #ccc;color:#777 !important;text-shadow:none !important;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";opacity:.65;cursor:default}
 .fb-clear{clear:both}
 .logo{background-image:url("../img/logo.png");width:64px;height:64px;display:inline-block;background-size:64px 64px}
-.banner{max-width:1000px;margin:0 auto;padding:0 20px 0 0;position:relative;font-family:'Source Sans Pro','Open Sans',Tahoma;background-color:#fffa9e;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding:10px;margin-bottom:10px}
-.banner h1{display:inline-block;position:absolute}
+header{max-width:1000px;margin:0 auto;padding:0 20px 0 0;position:relative;font-family:'Source Sans Pro','Open Sans',Tahoma;background-color:#fffa9e;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding:10px;margin-bottom:10px}
+header h1{display:inline-block;position:absolute}
 .fb-main{max-width:1000px;margin:0 auto;padding:0 20px 0 0;position:relative;font-family:'Source Sans Pro','Open Sans',Tahoma}
 .fb-save-wrapper{position:absolute;right:20px;top:10px}
 .fb-left{float:left;width:320px;padding-top:30px}
@@ -76,3 +76,5 @@ input[type=text]{margin-bottom:3px}
 select{margin-bottom:5px;font-size:40px}
 .section-image{height:200px;width:auto}
 .section-image.image-control{height:100px;width:auto}
+footer{max-width:1000px;margin:0 auto;padding:0 20px 0 0;position:relative;font-family:'Source Sans Pro','Open Sans',Tahoma;background-color:#ddd;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding:10px;margin-top:10px}
+.logo-nuchwezi{background-image:url("../img/logo-nuchwezi.png");height:60px;width:86.11764705882354px;display:inline-block;background-size:86.11764705882354px 60px}

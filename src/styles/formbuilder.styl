@@ -1,6 +1,7 @@
 $prim-color = #1abc9c
 $sec-color = #16a085
-$banner-color = rgba(255, 250, 158, 1)
+$header-bg-color = rgba(255, 250, 158, 1)
+$footer-bg-color = rgba(221, 221, 221, 1)
 $page-bg-color = #444;
 $editor-bg-color = #fff;
 
@@ -55,20 +56,20 @@ $editing-border = darken($editing-bg, 7%)
     background-size: 64px 64px;
 }
     
-.banner {
+header {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px 0 0;
   position: relative;
   font-family: 'Source Sans Pro', 'Open Sans', Tahoma;
 
-    background-color: $banner-color;
+    background-color: $header-bg-color;
     border-radius(6px);
     padding: 10px;
     margin-bottom: 10px;
 }
 
-.banner h1 {
+header h1 {
     display: inline-block;
 position: absolute;
 }
@@ -467,4 +468,28 @@ select {
 .section-image.image-control {
     height: 100px;
     width: auto;
+}
+
+
+footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 0 0;
+  position: relative;
+  font-family: 'Source Sans Pro', 'Open Sans', Tahoma;
+
+    background-color: $footer-bg-color;
+    border-radius(6px);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+$nlogo_w_to_h_ratio = 1.4352941176470588
+
+.logo-nuchwezi {
+    background-image: url('../img/logo-nuchwezi.png');
+    height: 60px;
+    width: @height * $nlogo_w_to_h_ratio;
+    display: inline-block;
+    background-size: @width @height;
 }
