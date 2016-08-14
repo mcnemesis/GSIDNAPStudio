@@ -293,7 +293,7 @@
       this.formSaved = true;
       this.saveFormButton = this.$el.find(".js-save-form");
       this.saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED);
-      $('#app-name, #app-color').change(function() {
+      $('#app-name, #app-color, #theatre-uri, #transport-mode').change(function() {
         _this.formSaved = false;
         return _this.saveForm.call(_this);
       });
@@ -524,7 +524,9 @@
       payload = JSON.stringify({
         app: {
           name: $('#app-name').val(),
-          color: $('#app-color').val()
+          color: $('#app-color').val(),
+          theatre_address: $('#theatre-uri').val(),
+          transport_mode: $('#transport-mode').val()
         },
         fields: this.collection.toJSON()
       });
@@ -582,6 +584,10 @@
       BUTTON_CLASS: 'fb-button',
       APP_NAME_CLASS: 'fb-app-name',
       APP_COLOR_CLASS: 'fb-app-color',
+      APP_THEATRE_URI_CLASS: 'fb-theatre-uri',
+      APP_TRANSPORT_MODE_CLASS: 'fb-transport-mode',
+      APP_TRANSPORT_MODES: ['POST', 'GET', 'SMS', 'EMAIL'],
+      APP_PUBLISH_BUTTON_CLASS: 'fb-app-publish',
       HTTP_ENDPOINT: '',
       HTTP_METHOD: 'POST',
       AUTOSAVE: true,
@@ -611,7 +617,9 @@
         UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!',
         SET_APP_NAME: 'App Name...',
         SET_APP_COLOR: '#Main App Color',
-        PUBLISH_APP: 'Publish The Persona'
+        PUBLISH_APP: 'Publish The Persona',
+        SET_THEATRE_URI: 'Theatre Address',
+        SET_TRANSPORT_MODE: 'How the Historion will submit acts'
       }
     };
 
@@ -1131,7 +1139,8 @@ return __p
 
 this["Formbuilder"]["templates"]["partials/publish"] = function(obj) {
 obj || (obj = {});
-var __t, __p = '', __e = _.escape;
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class=\'fb-publish-wrapper\'>\n  <input type="text" id=\'app-name\' class=\'' +
 ((__t = ( Formbuilder.options.APP_NAME_CLASS )) == null ? '' : __t) +
@@ -1141,8 +1150,26 @@ __p += '<div class=\'fb-publish-wrapper\'>\n  <input type="text" id=\'app-name\'
 ((__t = ( Formbuilder.options.APP_COLOR_CLASS )) == null ? '' : __t) +
 '\' placeholder=\'' +
 ((__t = ( Formbuilder.options.dict.SET_APP_COLOR )) == null ? '' : __t) +
-'\'></input>\n  <button id=\'js-publish-form\' class=\'' +
+'\'></input>\n  <input type="text" id=\'theatre-uri\' class=\'' +
+((__t = ( Formbuilder.options.APP_THEATRE_URI_CLASS )) == null ? '' : __t) +
+'\' placeholder=\'' +
+((__t = ( Formbuilder.options.dict.SET_THEATRE_URI )) == null ? '' : __t) +
+'\'></input>\n  <select id=\'transport-mode\' class=\'' +
+((__t = ( Formbuilder.options.APP_TRANSPORT_MODE_CLASS )) == null ? '' : __t) +
+'\' title=\'' +
+((__t = ( Formbuilder.options.dict.SET_TRANSPORT_MODE )) == null ? '' : __t) +
+'\' >\n      ';
+ _.each(Formbuilder.options.APP_TRANSPORT_MODES, function(mode){ ;
+__p += '\n      <option value="' +
+((__t = ( mode )) == null ? '' : __t) +
+'">' +
+((__t = ( mode )) == null ? '' : __t) +
+'</option>\n      ';
+ }); ;
+__p += '\n      </select>\n  <button id=\'js-publish-form\' class=\'' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
+' ' +
+((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
 '\'>' +
 ((__t = ( Formbuilder.options.dict.PUBLISH_APP )) == null ? '' : __t) +
 '</button>\n    <div id="code" class="code"></div>\n</div>\n';

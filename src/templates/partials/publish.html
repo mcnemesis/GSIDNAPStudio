@@ -1,6 +1,12 @@
 <div class='fb-publish-wrapper'>
   <input type="text" id='app-name' class='<%= Formbuilder.options.APP_NAME_CLASS %>' placeholder='<%= Formbuilder.options.dict.SET_APP_NAME %>'></input>
   <input type="text" id='app-color' class='<%= Formbuilder.options.APP_COLOR_CLASS %>' placeholder='<%= Formbuilder.options.dict.SET_APP_COLOR %>'></input>
-  <button id='js-publish-form' class='<%= Formbuilder.options.BUTTON_CLASS %>'><%= Formbuilder.options.dict.PUBLISH_APP %></button>
+  <input type="text" id='theatre-uri' class='<%= Formbuilder.options.APP_THEATRE_URI_CLASS %>' placeholder='<%= Formbuilder.options.dict.SET_THEATRE_URI %>'></input>
+  <select id='transport-mode' class='<%= Formbuilder.options.APP_TRANSPORT_MODE_CLASS %>' title='<%= Formbuilder.options.dict.SET_TRANSPORT_MODE %>' >
+      <% _.each(Formbuilder.options.APP_TRANSPORT_MODES, function(mode){ %>
+      <option value="<%= mode %>"><%= mode %></option>
+      <% }); %>
+      </select>
+  <button id='js-publish-form' class='<%= Formbuilder.options.BUTTON_CLASS %> <%= Formbuilder.options.APP_PUBLISH_BUTTON_CLASS %>'><%= Formbuilder.options.dict.PUBLISH_APP %></button>
     <div id="code" class="code"></div>
 </div>

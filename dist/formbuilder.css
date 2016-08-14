@@ -81,3 +81,5 @@ footer{max-width:1000px;margin:0 auto;padding:0 20px 0 0;position:relative;font-
 .logo-nuchwezi{background-image:url("../img/logo-nuchwezi.png");height:60px;width:86.11764705882354px;display:inline-block;background-size:86.11764705882354px 60px}
 .fb-publish-wrapper{padding:10px;background-color:#6febd3;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 0 9px 1px rgba(0,0,0,0.75);-moz-box-shadow:0 0 9px 1px rgba(0,0,0,0.75);box-shadow:0 0 9px 1px rgba(0,0,0,0.75);margin:10px;margin-top:20px}
 .code{background-color:#fff;padding:20px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;margin-top:10px}
+.fb-transport-mode{font-size:16px}
+.fb-app-publish{padding:3px;background:none repeat scroll 0% 0% #a0161b}

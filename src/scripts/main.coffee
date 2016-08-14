@@ -164,7 +164,7 @@ class BuilderView extends Backbone.View
     @saveFormButton = @$el.find(".js-save-form")
     @saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED)
 
-    $('#app-name, #app-color').change =>
+    $('#app-name, #app-color, #theatre-uri, #transport-mode').change =>
         @formSaved = false
         @saveForm.call(@)
 
@@ -347,6 +347,8 @@ class BuilderView extends Backbone.View
             app:
                 name: $('#app-name').val()
                 color: $('#app-color').val()
+                theatre_address: $('#theatre-uri').val()
+                transport_mode: $('#transport-mode').val()
             fields: @collection.toJSON()
 
     if Formbuilder.options.HTTP_ENDPOINT then @doAjaxSave(payload)
@@ -386,6 +388,10 @@ class Formbuilder
     BUTTON_CLASS: 'fb-button'
     APP_NAME_CLASS: 'fb-app-name'
     APP_COLOR_CLASS: 'fb-app-color'
+    APP_THEATRE_URI_CLASS: 'fb-theatre-uri'
+    APP_TRANSPORT_MODE_CLASS: 'fb-transport-mode'
+    APP_TRANSPORT_MODES: ['POST','GET','SMS','EMAIL']
+    APP_PUBLISH_BUTTON_CLASS: 'fb-app-publish'
     HTTP_ENDPOINT: ''
     HTTP_METHOD: 'POST'
     AUTOSAVE: true
@@ -417,6 +423,8 @@ class Formbuilder
       SET_APP_NAME: 'App Name...'
       SET_APP_COLOR: '#Main App Color'
       PUBLISH_APP: 'Publish The Persona'
+      SET_THEATRE_URI: 'Theatre Address'
+      SET_TRANSPORT_MODE: 'How the Historion will submit acts'
 
   @fields: {}
   @inputFields: {}
