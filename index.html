@@ -62,6 +62,7 @@
                 fb.on('save', function(payload){
                     console.log(payload);
                     if(window.publish){
+                      $('#code').html('<span class="publish-status">Wait as this persona is published...</span>');
                         $.ajax({
                           url: 'https://theatre.nuchwezi.com/api/persona/create/',
                           type: 'POST',
@@ -71,6 +72,9 @@
                                 console.log(data)
                                 make_qrcode('#code',data, defaultQRCODE_EXPORT_SIZE);
                                 window.publish = false;
+                          },
+                          error: function(){
+                              $('#code').html('<span class="publish-failed">Publishing of this persona failed. Ensure that this studio has access to persona publishing facility, such as a theatre. Contact tech[at]nuchwezi[dot]com, for access to a reliable, first-class theatre implementation, or get access to the entire suite of technologies in Project-Okot.</span>');
                           }
                         });
                     }

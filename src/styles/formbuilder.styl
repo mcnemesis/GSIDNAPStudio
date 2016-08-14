@@ -1,10 +1,13 @@
-$prim-color = #1abc9c
-$sec-color = #16a085
-$header-bg-color = rgba(255, 250, 158, 1)
-$preview-bg-color = rgba(56, 45, 52, 1)
-$footer-bg-color = rgba(221, 221, 221, 1)
-$page-bg-color = #444;
+$prim-color = #490A3D
+$sec-color = #BD1550
+$header-bg-color = #F8CA00
+$preview-bg-color =  #490A3D
+$footer-bg-color = #C2CBCE
+$page-bg-color = #556270
 $editor-bg-color = #fff;
+$app-publish-bg-color = #8A9B0F 
+$app-publish-status-color = #53777A
+$app-publish-failed-color = #C02942
 
 border-radius()
   -webkit-border-radius: arguments
@@ -513,7 +516,7 @@ $nlogo_w_to_h_ratio = 1.4352941176470588
 
 .fb-publish-wrapper {
     padding: 10px;
-    background-color: lighten($sec-color, 50%);
+    background-color: $app-publish-bg-color;
     border-radius(6px);
     box-shadow: 0px 0px 9px 1px rgba(0, 0, 0, 0.75);
     margin: 10px;
@@ -522,9 +525,10 @@ $nlogo_w_to_h_ratio = 1.4352941176470588
 
 .code {
     background-color: white;
-    padding: 20px;
+    padding: 45px;
     border-radius: 6px;
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .fb-transport-mode {
@@ -533,5 +537,13 @@ $nlogo_w_to_h_ratio = 1.4352941176470588
 
 .fb-app-publish {
   padding: 3px;
-  background: none repeat scroll 0% 0% rgba(160, 22, 27, 1)
+  background: none repeat scroll 0% 0% $sec-color;
+}
+
+.publish-status {
+    color: $app-publish-status-color;
+}
+
+.publish-failed {
+    color: $app-publish-failed-color;
 }
