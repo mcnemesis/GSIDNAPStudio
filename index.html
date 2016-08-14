@@ -9,18 +9,18 @@
     <body>
         <header><span class="logo"></span> <h1>The Studio </h1></header>
         <article>
-        <div class='fb-main'></div>
+            <div class='fb-main'></div>
         </article>
         <footer>
             <table>
                 <tr>
                     <td>
                         <p>  Read about 
-                            <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Studio">The Studio</a>,
-                            <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Historion">The Historion</a> and 
-                            <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Theatre">The Theatre</a>,
-                            that are all part of the amazing, disruptive, emerging-future tech called
-                            <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/?#chapter-500">Project Okot (Project-O)</a> - yet another service to humanity, by the <a target="_blank" href="https://nuchwezi.com">NuChwezi</a>
+                        <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Studio">The Studio</a>,
+                        <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Historion">The Historion</a> and 
+                        <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Theatre">The Theatre</a>,
+                        that are all part of the amazing, disruptive, emerging-future tech called
+                        <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/?#chapter-500">Project Okot (Project-O)</a> - yet another service to humanity, by the <a target="_blank" href="https://nuchwezi.com">NuChwezi</a>
                         </p>
                     </td>
                     <td>
@@ -38,22 +38,21 @@
         <script src="dist/formbuilder.js"></script>
 
         <script>
+            var defaultQRCODE_SIZE = 200;
+            var defaultQRCODE_EXPORT_SIZE = 500;
+            var defaultEXPORT_SIZE_H = 400;
+            var defaultEXPORT_SIZE_W = 1000;
 
+            function make_qrcode(selector,data,size){
+                $(selector).empty();
+                $(selector).qrcode({
+                    render: 'canvas',
+                    width: size,
+                    height: size,
+                    text: data
+                });
+            }
 
-var defaultQRCODE_SIZE = 200;
-var defaultQRCODE_EXPORT_SIZE = 500;
-var defaultEXPORT_SIZE_H = 400;
-var defaultEXPORT_SIZE_W = 1000;
-
-function make_qrcode(selector,data,size){
-    $(selector).empty();
-    $(selector).qrcode({
-        render: 'canvas',
-        width: size,
-        height: size,
-        text: data
-    });
-}
             $(function(){
                 fb = new Formbuilder({
                     selector: '.fb-main',
@@ -63,8 +62,18 @@ function make_qrcode(selector,data,size){
                 fb.on('save', function(payload){
                     console.log(payload);
                     if(window.publish){
-                        make_qrcode('#code',JSON.stringify(payload), defaultQRCODE_EXPORT_SIZE);
-                        window.publish = false;
+
+                        $.ajax({
+                          url: 'https://theatre.nuchwezi.com/api/persona/create/',
+                          type: 'POST',
+                          data: payload,
+                          contentType: "application/json",
+                          success: function(data){
+                                console.log(data)
+                                make_qrcode('#code',data, defaultQRCODE_EXPORT_SIZE);
+                                window.publish = false;
+                          }
+                        });
                     }
                 })
             });
