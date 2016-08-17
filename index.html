@@ -85,7 +85,7 @@
                     }
 
                     if(window.download_persona){
-                        var appName = JSON.parse(payload).app.name || "Persona";
+                        var appName = JSON.parse(payload).app.name.replace(/\s+/g,"_") || "Persona";
                         var persona_file_name = appName + "-" + (new Date()).toISOString() + ".persona";
                         $('#code').html('<span class="publish-status">Please save the generated Persona file: ' + persona_file_name + '</span>');
                         saveAs(new Blob([payload], { type: "application/json+persona" }), persona_file_name)
