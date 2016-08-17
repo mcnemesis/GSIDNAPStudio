@@ -165,6 +165,7 @@ class BuilderView extends Backbone.View
     @saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED)
 
     $('#app-name, #app-color, #theatre-uri, #transport-mode').change =>
+        window.publish = false // prevent unwarranted publishing...
         @formSaved = false
         @saveForm.call(@)
 

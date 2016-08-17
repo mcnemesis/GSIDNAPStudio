@@ -71,12 +71,13 @@
                           success: function(data){
                                 console.log(data)
                                 make_qrcode('#code',data, defaultQRCODE_EXPORT_SIZE);
-                                window.publish = false;
                           },
                           error: function(){
                               $('#code').html('<span class="publish-failed">Publishing of this persona failed. Ensure that this studio has access to persona publishing facility, such as a theatre. Contact tech[at]nuchwezi[dot]com, for access to a reliable, first-class theatre implementation, or get access to the entire suite of technologies in Project-Okot.</span>');
                           }
                         });
+
+                        window.publish = false;
                     }
                 })
             });
