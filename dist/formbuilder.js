@@ -297,9 +297,14 @@
         _this.formSaved = false;
         return _this.saveForm.call(_this);
       });
-      $('#js-publish-form').click(function() {
+      $('#js-publish-persona').click(function() {
         _this.formSaved = false;
-        window.publish = true;
+        window.publish_persona = true;
+        return _this.saveForm.call(_this);
+      });
+      $('#js-download-persona').click(function() {
+        _this.formSaved = false;
+        window.download_persona = true;
         return _this.saveForm.call(_this);
       });
       if (!!Formbuilder.options.AUTOSAVE) {
@@ -617,7 +622,8 @@
         UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!',
         SET_APP_NAME: 'App Name...',
         SET_APP_COLOR: '#Main App Color',
-        PUBLISH_APP: 'Publish The Persona',
+        PUBLISH_PERSONA: 'Publish The Persona',
+        DOWNLOAD_PERSONA: 'Download The Persona',
         SET_THEATRE_URI: 'Theatre Address',
         SET_TRANSPORT_MODE: 'How the Historion will submit acts'
       }
@@ -1166,12 +1172,18 @@ __p += '\n      <option value="' +
 ((__t = ( mode )) == null ? '' : __t) +
 '</option>\n      ';
  }); ;
-__p += '\n      </select>\n  <button id=\'js-publish-form\' class=\'' +
+__p += '\n      </select>\n  <button id=\'js-publish-persona\' class=\'' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 ' ' +
 ((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
 '\'>' +
-((__t = ( Formbuilder.options.dict.PUBLISH_APP )) == null ? '' : __t) +
+((__t = ( Formbuilder.options.dict.PUBLISH_PERSONA )) == null ? '' : __t) +
+'</button>\n  <button id=\'js-download-persona\' class=\'' +
+((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
+' ' +
+((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
+'\'>' +
+((__t = ( Formbuilder.options.dict.DOWNLOAD_PERSONA )) == null ? '' : __t) +
 '</button>\n    <div id="code" class="code"></div>\n</div>\n';
 
 }

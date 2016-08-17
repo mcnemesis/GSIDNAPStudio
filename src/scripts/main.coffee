@@ -165,13 +165,17 @@ class BuilderView extends Backbone.View
     @saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED)
 
     $('#app-name, #app-color, #theatre-uri, #transport-mode').change =>
-        window.publish = false // prevent unwarranted publishing...
         @formSaved = false
         @saveForm.call(@)
 
-    $('#js-publish-form').click =>
+    $('#js-publish-persona').click =>
         @formSaved = false
-        window.publish = true
+        window.publish_persona = true
+        @saveForm.call(@)
+
+    $('#js-download-persona').click =>
+        @formSaved = false
+        window.download_persona = true
         @saveForm.call(@)
 
     unless !Formbuilder.options.AUTOSAVE
@@ -423,7 +427,8 @@ class Formbuilder
       UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!'
       SET_APP_NAME: 'App Name...'
       SET_APP_COLOR: '#Main App Color'
-      PUBLISH_APP: 'Publish The Persona'
+      PUBLISH_PERSONA: 'Publish The Persona'
+      DOWNLOAD_PERSONA: 'Download The Persona'
       SET_THEATRE_URI: 'Theatre Address'
       SET_TRANSPORT_MODE: 'How the Historion will submit acts'
 
