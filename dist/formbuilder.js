@@ -625,7 +625,8 @@
         PUBLISH_PERSONA: 'Publish The Persona',
         DOWNLOAD_PERSONA: 'Download The Persona',
         SET_THEATRE_URI: 'Theatre Address',
-        SET_TRANSPORT_MODE: 'How the Historion will submit acts'
+        SET_TRANSPORT_MODE: 'How the Historion will submit acts',
+        EMPTY_FIELDS_MESSAGE: 'The app is currently empty! Start designing, by dragging and dropping fields onto the app canvas below...'
       }
     };
 
@@ -1194,7 +1195,9 @@ this["Formbuilder"]["templates"]["partials/right_side"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-right\'>\n  <div class=\'fb-no-response-fields\'>No response fields</div>\n  <div class=\'fb-response-fields\'></div>\n  ' +
+__p += '<div class=\'fb-right\'>\n<div class=\'fb-no-response-fields\'>' +
+((__t = ( Formbuilder.options.dict.EMPTY_FIELDS_MESSAGE )) == null ? '' : __t) +
+'</div>\n  <div class=\'fb-response-fields\'></div>\n  ' +
 ((__t = ( Formbuilder.templates['partials/publish']() )) == null ? '' : __t) +
 '\n</div>\n';
 

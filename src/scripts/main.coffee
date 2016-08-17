@@ -431,6 +431,7 @@ class Formbuilder
       DOWNLOAD_PERSONA: 'Download The Persona'
       SET_THEATRE_URI: 'Theatre Address'
       SET_TRANSPORT_MODE: 'How the Historion will submit acts'
+      EMPTY_FIELDS_MESSAGE: 'The app is currently empty! Start designing, by dragging and dropping fields onto the app canvas below...'
 
   @fields: {}
   @inputFields: {}
