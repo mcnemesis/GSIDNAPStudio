@@ -86,3 +86,4 @@ footer{max-width:1000px;margin:0 auto;padding:0 20px 0 0;position:relative;font-
 .publish-status{color:#53777a}
 .publish-failed{color:#c02942}
 header h1 small{font-size:small !important;color:#490a3d}
+textarea.fb-app-description{width:100%}

@@ -293,7 +293,7 @@
       this.formSaved = true;
       this.saveFormButton = this.$el.find(".js-save-form");
       this.saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED);
-      $('#app-name, #app-color, #theatre-uri, #transport-mode').change(function() {
+      $('#app-name, #app-color, #theatre-uri, #transport-mode, #app-description, #app-brand-image').change(function() {
         _this.formSaved = false;
         return _this.saveForm.call(_this);
       });
@@ -532,6 +532,8 @@
           color: $('#app-color').val(),
           theatre_address: $('#theatre-uri').val(),
           transport_mode: $('#transport-mode').val(),
+          description: $('#app-description').val(),
+          brand_image: $('#app-brand-image').val(),
           uuid: generateUUID()
         },
         fields: this.collection.toJSON()
@@ -589,6 +591,8 @@
     Formbuilder.options = {
       BUTTON_CLASS: 'fb-button',
       APP_NAME_CLASS: 'fb-app-name',
+      APP_DESCRIPTION_CLASS: 'fb-app-description',
+      APP_IMAGE_CLASS: 'fb-app-image',
       APP_COLOR_CLASS: 'fb-app-color',
       APP_THEATRE_URI_CLASS: 'fb-theatre-uri',
       APP_TRANSPORT_MODE_CLASS: 'fb-transport-mode',
@@ -622,6 +626,8 @@
         SAVE_FORM: 'Save form',
         UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!',
         SET_APP_NAME: 'App Name...',
+        SET_APP_IMAGE: 'App Brand Image URI...',
+        SET_APP_DESCRIPTION: 'Briefly describe the app and its purpose, to the users...',
         SET_APP_COLOR: '#Main App Color',
         PUBLISH_PERSONA: 'Publish The Persona',
         DOWNLOAD_PERSONA: 'Download The Persona',
@@ -1150,43 +1156,51 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class=\'fb-publish-wrapper\'>\n  <input type="text" id=\'app-name\' class=\'' +
+__p += '<div class=\'fb-publish-wrapper\'>\n<input type="text" id=\'app-name\' class=\'' +
 ((__t = ( Formbuilder.options.APP_NAME_CLASS )) == null ? '' : __t) +
 '\' placeholder=\'' +
 ((__t = ( Formbuilder.options.dict.SET_APP_NAME )) == null ? '' : __t) +
-'\'></input>\n  <input type="text" id=\'app-color\' class=\'' +
+'\'></input>\n<input type="text" id=\'app-color\' class=\'' +
 ((__t = ( Formbuilder.options.APP_COLOR_CLASS )) == null ? '' : __t) +
 '\' placeholder=\'' +
 ((__t = ( Formbuilder.options.dict.SET_APP_COLOR )) == null ? '' : __t) +
-'\'></input>\n  <input type="text" id=\'theatre-uri\' class=\'' +
+'\'></input>\n<input type="text" id=\'app-brand-image\' class=\'' +
+((__t = ( Formbuilder.options.APP_IMAGE_CLASS )) == null ? '' : __t) +
+'\' placeholder=\'' +
+((__t = ( Formbuilder.options.dict.SET_APP_IMAGE )) == null ? '' : __t) +
+'\'></input>\n<input type="text" id=\'theatre-uri\' class=\'' +
 ((__t = ( Formbuilder.options.APP_THEATRE_URI_CLASS )) == null ? '' : __t) +
 '\' placeholder=\'' +
 ((__t = ( Formbuilder.options.dict.SET_THEATRE_URI )) == null ? '' : __t) +
-'\'></input>\n  <select id=\'transport-mode\' class=\'' +
+'\'></input>\n<select id=\'transport-mode\' class=\'' +
 ((__t = ( Formbuilder.options.APP_TRANSPORT_MODE_CLASS )) == null ? '' : __t) +
 '\' title=\'' +
 ((__t = ( Formbuilder.options.dict.SET_TRANSPORT_MODE )) == null ? '' : __t) +
-'\' >\n      ';
+'\' >\n    ';
  _.each(Formbuilder.options.APP_TRANSPORT_MODES, function(mode){ ;
-__p += '\n      <option value="' +
+__p += '\n    <option value="' +
 ((__t = ( mode )) == null ? '' : __t) +
 '">' +
 ((__t = ( mode )) == null ? '' : __t) +
-'</option>\n      ';
+'</option>\n    ';
  }); ;
-__p += '\n      </select>\n  <button id=\'js-publish-persona\' class=\'' +
+__p += '\n</select>\n<hr/>\n<textarea id=\'app-description\' class=\'' +
+((__t = ( Formbuilder.options.APP_DESCRIPTION_CLASS )) == null ? '' : __t) +
+'\' placeholder=\'' +
+((__t = ( Formbuilder.options.dict.SET_APP_DESCRIPTION )) == null ? '' : __t) +
+'\'></textarea>\n<hr/>\n<button id=\'js-publish-persona\' class=\'' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 ' ' +
 ((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
 '\'>' +
 ((__t = ( Formbuilder.options.dict.PUBLISH_PERSONA )) == null ? '' : __t) +
-'</button>\n  <button id=\'js-download-persona\' class=\'' +
+'</button>\n<button id=\'js-download-persona\' class=\'' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 ' ' +
 ((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
 '\'>' +
 ((__t = ( Formbuilder.options.dict.DOWNLOAD_PERSONA )) == null ? '' : __t) +
-'</button>\n    <div id="code" class="code"></div>\n</div>\n';
+'</button>\n<div id="code" class="code"></div>\n</div>\n';
 
 }
 return __p

@@ -164,7 +164,7 @@ class BuilderView extends Backbone.View
     @saveFormButton = @$el.find(".js-save-form")
     @saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED)
 
-    $('#app-name, #app-color, #theatre-uri, #transport-mode').change =>
+    $('#app-name, #app-color, #theatre-uri, #transport-mode, #app-description, #app-brand-image').change =>
         @formSaved = false
         @saveForm.call(@)
 
@@ -354,6 +354,8 @@ class BuilderView extends Backbone.View
                 color: $('#app-color').val()
                 theatre_address: $('#theatre-uri').val()
                 transport_mode: $('#transport-mode').val()
+                description: $('#app-description').val()
+                brand_image: $('#app-brand-image').val()
                 uuid: generateUUID()
             fields: @collection.toJSON()
 
@@ -393,6 +395,8 @@ class Formbuilder
   @options:
     BUTTON_CLASS: 'fb-button'
     APP_NAME_CLASS: 'fb-app-name'
+    APP_DESCRIPTION_CLASS: 'fb-app-description'
+    APP_IMAGE_CLASS: 'fb-app-image'
     APP_COLOR_CLASS: 'fb-app-color'
     APP_THEATRE_URI_CLASS: 'fb-theatre-uri'
     APP_TRANSPORT_MODE_CLASS: 'fb-transport-mode'
@@ -427,6 +431,8 @@ class Formbuilder
       SAVE_FORM: 'Save form'
       UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!'
       SET_APP_NAME: 'App Name...'
+      SET_APP_IMAGE: 'App Brand Image URI...'
+      SET_APP_DESCRIPTION: 'Briefly describe the app and its purpose, to the users...'
       SET_APP_COLOR: '#Main App Color'
       PUBLISH_PERSONA: 'Publish The Persona'
       DOWNLOAD_PERSONA: 'Download The Persona'
