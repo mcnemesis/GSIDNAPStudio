@@ -354,6 +354,7 @@ class BuilderView extends Backbone.View
                 color: $('#app-color').val()
                 theatre_address: $('#theatre-uri').val()
                 transport_mode: $('#transport-mode').val()
+                uuid: generateUUID()
             fields: @collection.toJSON()
 
     if Formbuilder.options.HTTP_ENDPOINT then @doAjaxSave(payload)

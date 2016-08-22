@@ -531,7 +531,8 @@
           name: $('#app-name').val(),
           color: $('#app-color').val(),
           theatre_address: $('#theatre-uri').val(),
-          transport_mode: $('#transport-mode').val()
+          transport_mode: $('#transport-mode').val(),
+          uuid: generateUUID()
         },
         fields: this.collection.toJSON()
       });
