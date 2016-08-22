@@ -55,11 +55,30 @@
                 });
             }
 
-            $(function(){
-                fb = new Formbuilder({
-                    selector: '.fb-main',
-                    //bootstrapData: existingForm
-                });
+            function init_fb(persona){
+
+                fb = null;
+
+                if(persona) {
+                    fb = new Formbuilder({
+                        selector: '.fb-main',
+                        bootstrapData: persona.fields
+                    });
+                    $('#app-name').val(persona.app.name);
+                    $('#app-color').val(persona.app.color);
+                    $('#app-brand-image').val(persona.app.brand_image);
+                    $('#theatre-uri').val(persona.app.theatre_address);
+                    $('#transport-mode').val(persona.app.transport_mode);
+                    $('#app-description').val(persona.app.description);
+                }
+                else {
+                    fb = new Formbuilder({
+                        selector: '.fb-main',
+                    });
+                }
+
+                if(fb == null)
+                    return;
 
                 fb.on('save', function(payload){
                     console.log(payload);
@@ -92,8 +111,55 @@
                         window.download_persona = false;
                     }
                 })
-            });
 
+                $('#import-persona-file').on('change',function(evt){
+                       var files = evt.target.files;
+                       var file = files[0];           
+                       var reader = new FileReader();
+                       reader.onload = function() {
+                         console.log(this.result);            
+                         try{
+                             init_fb(JSON.parse(this.result));
+                              $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
+                        }catch(e){
+                            $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard specifications, and try again.</span>');
+                        }
+                       }
+                       reader.readAsText(file)
+
+                });
+
+                $('#js-import-persona-json').on('click',function(evt){
+                    var personaJSON = $('#import-persona-input').val();
+                    try{
+                        init_fb(JSON.parse(personaJSON));
+                        $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
+                    }catch(e){
+                        $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard specifications, and try again.</span>');
+                    }
+                });
+
+                $('#js-import-persona-uri').on('click',function(evt){
+
+                    $.ajax({
+                      url: $('#import-persona-uri').val(),
+                      type: 'GET',
+                      success: function(data){
+                            console.log(data)
+                            try{
+                                init_fb(JSON.parse(data));
+                                $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
+                            }catch(e){
+                                $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard specifications, and try again.</span>');
+                            }
+                      },
+                      error: function(){
+                            $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard specifications, and try again.</span>');
+                      }
+                    });
+                });
+
+            }
 
             /* used in the persona encoding functions... */
             function generateUUID(){
@@ -108,6 +174,12 @@
                 });
                 return uuid;
             }
+
+            $(function(){
+
+                init_fb();
+
+            });
 
         </script>
 

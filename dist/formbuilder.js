@@ -590,6 +590,7 @@
 
     Formbuilder.options = {
       BUTTON_CLASS: 'fb-button',
+      IMPORT_PERSONA_JSON_CLASS: 'fb-import-persona-json',
       APP_NAME_CLASS: 'fb-app-name',
       APP_DESCRIPTION_CLASS: 'fb-app-description',
       APP_IMAGE_CLASS: 'fb-app-image',
@@ -625,11 +626,17 @@
         ALL_CHANGES_SAVED: 'All changes saved',
         SAVE_FORM: 'Save form',
         UNSAVED_CHANGES: 'You have unsaved changes. If you leave this page, you will lose those changes!',
+        SET_IMPORT_PERSONA_FILE: 'Set the Persona file here, to start your design from an existing persona.',
+        SET_IMPORT_PERSONA_JSON: 'Paste the Persona JSON here, to start your design from an existing persona.',
+        SET_IMPORT_PERSONA_URI: 'Paste the Persona URI here, to start your design from an existing persona.',
         SET_APP_NAME: 'App Name...',
         SET_APP_IMAGE: 'App Brand Image URI...',
         SET_APP_DESCRIPTION: 'Briefly describe the app and its purpose, to the users...',
         SET_APP_COLOR: '#Main App Color',
         PUBLISH_PERSONA: 'Publish The Persona',
+        IMPORT_PERSONA_JSON: 'Import from JSON',
+        IMPORT_PERSONA_URI: 'Import from URI',
+        IMPORT_PERSONA_FILE: 'Import from FILE',
         DOWNLOAD_PERSONA: 'Download The Persona',
         SET_THEATRE_URI: 'Theatre Address',
         SET_TRANSPORT_MODE: 'How the Historion will submit acts',
@@ -1137,15 +1144,53 @@ __p += '<div class=\'fb-tab-pane\' id=\'editField\'>\n  <div class=\'fb-edit-fie
 return __p
 };
 
+this["Formbuilder"]["templates"]["partials/import_persona"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class=\'fb-tab-pane\' id=\'importPersona\'>\n<div class=\'fb-import-persona-wrapper\'>\n\n    <input type="file" id="import-persona-file" class=\'' +
+((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
+' ' +
+((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
+'\' title=\'' +
+((__t = ( Formbuilder.options.dict.SET_IMPORT_PERSONA_FILE )) == null ? '' : __t) +
+'\'></input>\n    <hr/>\n    <textarea id="import-persona-input" class=\'' +
+((__t = ( Formbuilder.options.IMPORT_PERSONA_JSON_CLASS )) == null ? '' : __t) +
+'\' placeholder=\'' +
+((__t = ( Formbuilder.options.dict.SET_IMPORT_PERSONA_JSON )) == null ? '' : __t) +
+'\'></textarea>\n    <button id=\'js-import-persona-json\' class=\'' +
+((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
+' ' +
+((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
+'\'>' +
+((__t = ( Formbuilder.options.dict.IMPORT_PERSONA_JSON )) == null ? '' : __t) +
+'</button>\n\n    <hr/>\n    <input type="text" id="import-persona-uri" class=\'' +
+((__t = ( Formbuilder.options.IMPORT_PERSONA_JSON_CLASS )) == null ? '' : __t) +
+'\' placeholder=\'' +
+((__t = ( Formbuilder.options.dict.SET_IMPORT_PERSONA_URI )) == null ? '' : __t) +
+'\'></input>\n    <button id=\'js-import-persona-uri\' class=\'' +
+((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
+' ' +
+((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
+'\'>' +
+((__t = ( Formbuilder.options.dict.IMPORT_PERSONA_URI )) == null ? '' : __t) +
+'</button>\n</div>\n</div>\n';
+
+}
+return __p
+};
+
 this["Formbuilder"]["templates"]["partials/left_side"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-left\'>\n  <ul class=\'fb-tabs\'>\n    <li class=\'active\'><a data-target=\'#addField\'>Add new field</a></li>\n    <li><a data-target=\'#editField\'>Edit field</a></li>\n  </ul>\n\n  <div class=\'fb-tab-content\'>\n    ' +
+__p += '<div class=\'fb-left\'>\n  <ul class=\'fb-tabs\'>\n    <li class=\'active\'><a data-target=\'#addField\'>+Field</a></li>\n    <li><a data-target=\'#editField\'>Edit</a></li>\n    <li><a data-target=\'#importPersona\'>Import</a></li>\n  </ul>\n\n  <div class=\'fb-tab-content\'>\n    ' +
 ((__t = ( Formbuilder.templates['partials/add_field']() )) == null ? '' : __t) +
 '\n    ' +
 ((__t = ( Formbuilder.templates['partials/edit_field']() )) == null ? '' : __t) +
-'\n  </div>\n</div>';
+'\n    ' +
+((__t = ( Formbuilder.templates['partials/import_persona']() )) == null ? '' : __t) +
+'\n  </div>\n</div>\n';
 
 }
 return __p
