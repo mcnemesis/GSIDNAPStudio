@@ -70,6 +70,10 @@
                     $('#theatre-uri').val(persona.app.theatre_address);
                     $('#transport-mode').val(persona.app.transport_mode);
                     $('#app-description').val(persona.app.description);
+                    if(persona.app.uuid)
+                        window.app_uuid = persona.app.uuid;
+                    else
+                        window.app_uuid = undefined;
                 }
                 else {
                     fb = new Formbuilder({

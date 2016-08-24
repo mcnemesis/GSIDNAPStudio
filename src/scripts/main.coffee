@@ -356,7 +356,7 @@ class BuilderView extends Backbone.View
                 transport_mode: $('#transport-mode').val()
                 description: $('#app-description').val()
                 brand_image: $('#app-brand-image').val()
-                uuid: generateUUID()
+                uuid: window.app_uuid || generateUUID()
             fields: @collection.toJSON()
 
     if Formbuilder.options.HTTP_ENDPOINT then @doAjaxSave(payload)

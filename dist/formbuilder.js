@@ -534,7 +534,7 @@
           transport_mode: $('#transport-mode').val(),
           description: $('#app-description').val(),
           brand_image: $('#app-brand-image').val(),
-          uuid: generateUUID()
+          uuid: window.app_uuid || generateUUID()
         },
         fields: this.collection.toJSON()
       });
