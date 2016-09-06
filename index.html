@@ -96,7 +96,6 @@
                           data: payload,
                           contentType: "application/json",
                           success: function(data){
-                                window.app_uuid = window.uuid;
                                 console.log(data)
                                 make_qrcode('#code',data, defaultQRCODE_EXPORT_SIZE);
                           },
@@ -177,7 +176,7 @@
                     d = Math.floor(d/16);
                     return (c=='x' ? r : (r&0x3|0x8)).toString(16);
                 });
-                window.uuid = uuid;
+                window.app_uuid = uuid;
                 return uuid;
             }
 
