@@ -164,7 +164,7 @@ class BuilderView extends Backbone.View
     @saveFormButton = @$el.find(".js-save-form")
     @saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED)
 
-    $('#app-name, #app-color, #theatre-uri, #transport-mode, #app-description, #app-brand-image').change =>
+    $('#app-name, #app-color, #publish-channel, #theatre-uri, #transport-mode, #app-description, #app-brand-image').change =>
         @formSaved = false
         @saveForm.call(@)
 
@@ -353,6 +353,7 @@ class BuilderView extends Backbone.View
                 name: $('#app-name').val()
                 color: $('#app-color').val()
                 theatre_address: $('#theatre-uri').val()
+                channel: $('#publish-channel').val()
                 transport_mode: $('#transport-mode').val()
                 description: $('#app-description').val()
                 brand_image: $('#app-brand-image').val()
@@ -403,6 +404,7 @@ class Formbuilder
     APP_TRANSPORT_MODE_CLASS: 'fb-transport-mode'
     APP_TRANSPORT_MODES: ['POST','GET','SMS','EMAIL']
     APP_PUBLISH_BUTTON_CLASS: 'fb-app-publish'
+    PUBLISH_CHANNEL_CLASS: 'fb-publish-channel'
     HTTP_ENDPOINT: ''
     HTTP_METHOD: 'POST'
     AUTOSAVE: true
@@ -438,6 +440,7 @@ class Formbuilder
       SET_APP_IMAGE: 'App Brand Image URI...'
       SET_APP_DESCRIPTION: 'Briefly describe the app and its purpose, to the users...'
       SET_APP_COLOR: '#Main App Color'
+      SET_PUBLISH_CHANNEL: 'CHANNEL to publish to'
       PUBLISH_PERSONA: 'Publish The Persona'
       IMPORT_PERSONA_JSON: 'Import from JSON'
       IMPORT_PERSONA_URI: 'Import from URI'

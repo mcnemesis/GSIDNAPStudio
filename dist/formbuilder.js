@@ -293,7 +293,7 @@
       this.formSaved = true;
       this.saveFormButton = this.$el.find(".js-save-form");
       this.saveFormButton.attr('disabled', true).text(Formbuilder.options.dict.ALL_CHANGES_SAVED);
-      $('#app-name, #app-color, #theatre-uri, #transport-mode, #app-description, #app-brand-image').change(function() {
+      $('#app-name, #app-color, #publish-channel, #theatre-uri, #transport-mode, #app-description, #app-brand-image').change(function() {
         _this.formSaved = false;
         return _this.saveForm.call(_this);
       });
@@ -531,6 +531,7 @@
           name: $('#app-name').val(),
           color: $('#app-color').val(),
           theatre_address: $('#theatre-uri').val(),
+          channel: $('#publish-channel').val(),
           transport_mode: $('#transport-mode').val(),
           description: $('#app-description').val(),
           brand_image: $('#app-brand-image').val(),
@@ -599,6 +600,7 @@
       APP_TRANSPORT_MODE_CLASS: 'fb-transport-mode',
       APP_TRANSPORT_MODES: ['POST', 'GET', 'SMS', 'EMAIL'],
       APP_PUBLISH_BUTTON_CLASS: 'fb-app-publish',
+      PUBLISH_CHANNEL_CLASS: 'fb-publish-channel',
       HTTP_ENDPOINT: '',
       HTTP_METHOD: 'POST',
       AUTOSAVE: true,
@@ -633,6 +635,7 @@
         SET_APP_IMAGE: 'App Brand Image URI...',
         SET_APP_DESCRIPTION: 'Briefly describe the app and its purpose, to the users...',
         SET_APP_COLOR: '#Main App Color',
+        SET_PUBLISH_CHANNEL: 'CHANNEL to publish to',
         PUBLISH_PERSONA: 'Publish The Persona',
         IMPORT_PERSONA_JSON: 'Import from JSON',
         IMPORT_PERSONA_URI: 'Import from URI',
@@ -1205,7 +1208,7 @@ __p += '<div class=\'fb-publish-wrapper\'>\n<input type="text" id=\'app-name\' c
 ((__t = ( Formbuilder.options.APP_NAME_CLASS )) == null ? '' : __t) +
 '\' placeholder=\'' +
 ((__t = ( Formbuilder.options.dict.SET_APP_NAME )) == null ? '' : __t) +
-'\'></input>\n<input type="text" id=\'app-color\' class=\'' +
+'\'></input>\n<input type="text" id=\'app-color\' value=\'#490A3D\' class=\'jscolor ' +
 ((__t = ( Formbuilder.options.APP_COLOR_CLASS )) == null ? '' : __t) +
 '\' placeholder=\'' +
 ((__t = ( Formbuilder.options.dict.SET_APP_COLOR )) == null ? '' : __t) +
@@ -1233,7 +1236,11 @@ __p += '\n</select>\n<hr/>\n<textarea id=\'app-description\' class=\'' +
 ((__t = ( Formbuilder.options.APP_DESCRIPTION_CLASS )) == null ? '' : __t) +
 '\' placeholder=\'' +
 ((__t = ( Formbuilder.options.dict.SET_APP_DESCRIPTION )) == null ? '' : __t) +
-'\'></textarea>\n<hr/>\n<button id=\'js-publish-persona\' class=\'' +
+'\'></textarea>\n<hr/>\n<input type="text" id=\'publish-channel\' class=\'' +
+((__t = ( Formbuilder.options.PUBLISH_CHANNEL_CLASS )) == null ? '' : __t) +
+'\' placeholder=\'' +
+((__t = ( Formbuilder.options.dict.SET_PUBLISH_CHANNEL )) == null ? '' : __t) +
+'\'></input>\n<button id=\'js-publish-persona\' class=\'' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 ' ' +
 ((__t = ( Formbuilder.options.APP_PUBLISH_BUTTON_CLASS )) == null ? '' : __t) +
