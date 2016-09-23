@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="dist/formbuilder.css" />
     </head>
     <body>
-        <header><span class="logo"></span> <h1>The Studio | <small>cook & serve new, native, cross-platform apps, faster than it takes to make coffee!</small></h1></header>
+        <header><span class="logo"></span> <h1><a href="." style="text-decoration:none;">The Studio</a> | <small>cook & serve new, native, cross-platform apps, faster than it takes to make coffee!</small></h1></header>
         <article>
             <div class='fb-main'></div>
         </article>
@@ -98,8 +98,10 @@
                           data: payload,
                           contentType: "application/json",
                           success: function(data){
+                                data = JSON.parse(data);
                                 console.log(data)
-                                make_qrcode('#code',data, defaultQRCODE_EXPORT_SIZE);
+                                make_qrcode('#code',data.api, defaultQRCODE_EXPORT_SIZE);
+                                $('#code').prepend($('<a/>', {'target': '_blank', 'href': data.app, 'class': 'fb-button', 'style': 'margin:10px'}).text('START USING THIS APP!'));
                           },
                           error: function(){
                               $('#code').html('<span class="publish-failed">Publishing of this persona failed. Ensure that this studio has access to persona publishing facility, such as a theatre. Contact tech[at]nuchwezi[dot]com, for access to a reliable, first-class theatre implementation, or get access to the entire suite of technologies in Project-Okot.</span>');
