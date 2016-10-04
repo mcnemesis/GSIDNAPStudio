@@ -2,10 +2,12 @@ $prim-color = #490A3D
 $sec-color = #BD1550
 $header-bg-color = #F8CA00
 $preview-bg-color =  #490A3D
-$footer-bg-color = #C2CBCE
+$footer-bg-color = black
+$footer-fore-color = #767770
+$footer-link-color = rgba(255, 255, 0, 0.68)
 $page-bg-color = #556270
 $editor-bg-color = #fff;
-$app-publish-bg-color = #8A9B0F 
+$app-publish-bg-color = #0F9B8C
 $app-publish-status-color = #53777A
 $app-publish-failed-color = #C02942
 
@@ -504,9 +506,16 @@ footer {
   font-family: 'Source Sans Pro', 'Open Sans', Tahoma;
 
     background-color: $footer-bg-color;
+    color: $footer-fore-color;
     border-radius(6px);
     padding: 10px;
     margin-top: 10px;
+}
+
+
+footer a, a:visited {
+    color: $footer-link-color;
+    text-decoration: none;
 }
 
 $nlogo_w_to_h_ratio = 1.4352941176470588
