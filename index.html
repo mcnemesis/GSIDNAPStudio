@@ -4,6 +4,7 @@
         <title>The Studio</title>
         <meta name="description" content="">
         <link rel="stylesheet" href="vendor/css/vendor.css" />
+        <link rel="stylesheet" href="vendor/css/spectrum.css" />
         <link rel="stylesheet" href="dist/formbuilder.css" />
     </head>
     <body>
@@ -37,7 +38,7 @@
         <script src="vendor/js/jquery.qrcode.js"></script>
         <script src="vendor/js/FileSaver.js"></script>
         <script src="vendor/js/Blob.js"></script>
-        <script src="vendor/js/jscolor.min.js"></script>
+        <script src="vendor/js/spectrum.js"></script>
         <script src="dist/formbuilder.js"></script>
 
         <script>
@@ -81,7 +82,8 @@
                         bootstrapData: persona.fields
                     });
                     $('#app-name').val(persona.app.name);
-                    $('#app-color').val(persona.app.color);
+                    $('#app-color').spectrum();
+                    $('#app-color').spectrum('set', persona.app.color);
                     $('#publish-channel').val(persona.app.channel);
                     $('#app-brand-image').val(persona.app.brand_image);
                     $('#theatre-uri').val(persona.app.theatre_address);
