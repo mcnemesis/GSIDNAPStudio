@@ -41,6 +41,21 @@
         <script src="dist/formbuilder.js"></script>
 
         <script>
+
+            function getUrlVars()
+            {
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for(var i = 0; i < hashes.length; i++)
+                {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+
+
             var defaultQRCODE_SIZE = 200;
             var defaultQRCODE_EXPORT_SIZE = 500;
             var defaultEXPORT_SIZE_H = 400;
@@ -133,7 +148,7 @@
                              init_fb(JSON.parse(this.result));
                               $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
                         }catch(e){
-                            $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard specifications, and try again.</span>');
+                            $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
                         }
                        }
                        reader.readAsText(file)
@@ -146,7 +161,7 @@
                         init_fb(JSON.parse(personaJSON));
                         $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
                     }catch(e){
-                        $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard specifications, and try again.</span>');
+                        $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
                     }
                 });
 
@@ -158,17 +173,18 @@
                       success: function(data){
                             console.log(data)
                             try{
-                                init_fb(JSON.parse(data));
+                                init_fb((typeof data === 'string' || data instanceof String) ? JSON.parse(data): data);
                                 $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
                             }catch(e){
-                                $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard specifications, and try again.</span>');
+                                $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
                             }
                       },
                       error: function(){
-                            $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard specifications, and try again.</span>');
+                            $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
                       }
                     });
                 });
+
 
             }
 
@@ -189,7 +205,38 @@
 
             $(function(){
 
-                init_fb();
+
+                // first, we check if the studio needs to be bootstrapped some way...
+                var query = getUrlVars();
+                if(query.purl != undefined){
+
+                    //first, initialize normally...
+                    init_fb();
+                    $('#code').html('<span class="publish-status">The persona specified in the URL is being loaded. Please wait...</span>');
+                    // then go on and fetch the persona to bootstrap with...
+                    $.ajax({
+                      url: query.purl,
+                        async: true,
+                        crossDomain: true,
+                      type: 'GET',
+                      success: function(data){
+                            console.log(data)
+                            try{
+                                init_fb((typeof data === 'string' || data instanceof String) ? JSON.parse(data): data);
+                                $('#code').html('<span class="publish-status">The Studio has been bootstrapped with the specified persona. You can now proceed with modifying it as you wish...</span>');
+                            }catch(e){
+                                $('#code').html('<span class="publish-failed">Parsing or loading the persona specified in the URL failed! Check the resource linked to, against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
+                            }
+                      },
+                      error: function(){
+                            $('#code').html('<span class="publish-failed">Parsing or loading the persona specified in the URL failed! Check the resource linked to, against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
+                      }
+                    });
+
+                }
+                else {
+                    init_fb();
+                }
 
             });
 
