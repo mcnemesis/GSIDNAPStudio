@@ -119,13 +119,46 @@
                                 data = JSON.parse(data);
                                 console.log(data)
                                 make_qrcode('#code',data.api, defaultQRCODE_EXPORT_SIZE);
+                                var btn_use_app = $('<a/>', {'target': '_blank', 'href': data.app, 'class': 'fb-button', 'style': 'margin:10px'}).text('START USING THIS APP!');
+                                var btn_app_stats = $('<a/>', {'target': '_blank', 'href': data.analytics, 'class': 'fb-button', 'style': 'margin:10px'}).text('ANALYTICS FOR THIS APP!');
                                 $('#code').prepend(
-                                            $('<a/>', {'target': '_blank', 'href': data.app, 'class': 'fb-button', 'style': 'margin:10px'}).text('START USING THIS APP!'),
-                                            $('<a/>', {'target': '_blank', 'href': data.analytics, 'class': 'fb-button', 'style': 'margin:10px'}).text('ANALYTICS FOR THIS APP!')
+                                            btn_use_app,
+                                            btn_app_stats
                                     );
+                                try{
+                                    var persona = JSON.parse(payload);
+                                    ga('send', 'event', 'App-Publish', 'success', persona.app.name, 10);
+                                    btn_use_app.click(function(e){
+
+                                         ga('send', 'event', {
+                                            eventCategory: 'Histrion-Link',
+                                            eventAction: 'click',
+                                            eventLabel: event.target.href,
+                                            eventValue: 10,
+                                            transport: 'beacon'
+                                          });
+
+                                    });
+
+                                    btn_app_stats.click(function(e){
+
+                                         ga('send', 'event', {
+                                            eventCategory: 'Diviner-Link',
+                                            eventAction: 'click',
+                                            eventLabel: event.target.href,
+                                            eventValue: 10,
+                                            transport: 'beacon'
+                                          });
+
+                                    });
+                                }catch(e){}
                           },
                           error: function(){
                               $('#code').html('<span class="publish-failed">Publishing of this persona failed. Ensure that this studio has access to persona publishing facility, such as a theatre. Contact tech[at]nuchwezi[dot]com, for access to a reliable, first-class theatre implementation, or get access to the entire suite of technologies in Project-Okot.</span>');
+                                try{
+                                    var persona = JSON.parse(payload);
+                                    ga('send', 'event', 'App-Publish-Failure', 'error', persona.app.name, -5);
+                                }catch(e){}
                           }
                         });
 
@@ -138,6 +171,10 @@
                         $('#code').html('<span class="publish-status">Please save the generated Persona file: ' + persona_file_name + '</span>');
                         saveAs(new Blob([payload], { type: "application/json+persona" }), persona_file_name)
                         window.download_persona = false;
+                        try{
+                            var persona = JSON.parse(payload);
+                            ga('send', 'event', 'App-Download', 'success', persona.app.name, 8);
+                        }catch(e){}
                     }
                 })
 
@@ -148,23 +185,28 @@
                        reader.onload = function() {
                          console.log(this.result);            
                          try{
-                             init_fb(JSON.parse(this.result));
+                             var persona = JSON.parse(this.result);
+                             init_fb(persona);
+                             ga('send', 'event', 'App-Import', 'file', persona.app.name, 8);
                               $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
                         }catch(e){
                             $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
+                            ga('send', 'event', 'App-Import-Failure', 'file', 'Error', -3);
                         }
                        }
-                       reader.readAsText(file)
-
+                       reader.readAsText(file);
                 });
 
                 $('#js-import-persona-json').on('click',function(evt){
                     var personaJSON = $('#import-persona-input').val();
                     try{
-                        init_fb(JSON.parse(personaJSON));
+                         var persona = JSON.parse(personaJSON);
+                        init_fb(persona);
                         $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
+                        ga('send', 'event', 'App-Import', 'json', persona.app.name, 5);
                     }catch(e){
                         $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
+                        ga('send', 'event', 'App-Import-Failure', 'json', 'Error', -1);
                     }
                 });
 
@@ -176,14 +218,17 @@
                       success: function(data){
                             console.log(data)
                             try{
-                                init_fb((typeof data === 'string' || data instanceof String) ? JSON.parse(data): data);
+                                var persona = (typeof data === 'string' || data instanceof String) ? JSON.parse(data): data;
+                                init_fb(persona);
                                 $('#code').html('<span class="publish-status">A new persona has been imported. You can now proceed with modifying it...</span>');
+                                ga('send', 'event', 'App-Import', 'url', persona.app.name, 10);
                             }catch(e){
                                 $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
                             }
                       },
                       error: function(){
                             $('#code').html('<span class="publish-failed">Parsing or loading the import persona failed! Check the input against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
+                            ga('send', 'event', 'App-Import-Failure', 'url', 'Error', -5);
                       }
                     });
                 });
@@ -225,10 +270,13 @@
                       success: function(data){
                             console.log(data)
                             try{
-                                init_fb((typeof data === 'string' || data instanceof String) ? JSON.parse(data): data);
+                                var persona = (typeof data === 'string' || data instanceof String) ? JSON.parse(data): data;
+                                init_fb(persona);
                                 $('#code').html('<span class="publish-status">The Studio has been bootstrapped with the specified persona. You can now proceed with modifying it as you wish...</span>');
+                                ga('send', 'event', 'App-Bootstrap', 'url', persona.app.name, 10);
                             }catch(e){
                                 $('#code').html('<span class="publish-failed">Parsing or loading the persona specified in the URL failed! Check the resource linked to, against the standard persona specifications, and whether it can be accessed by this Studio, and then try again.</span>');
+                                ga('send', 'event', 'App-Bootstrap-Failure', 'url', 'Error', -5);
                             }
                       },
                       error: function(){
