@@ -1187,12 +1187,14 @@ this["Formbuilder"]["templates"]["partials/left_side"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class=\'fb-left\'>\n  <ul class=\'fb-tabs\'>\n    <li class=\'active\'><a data-target=\'#addField\'>+Field</a></li>\n    <li><a data-target=\'#editField\'>Edit</a></li>\n    <li><a data-target=\'#importPersona\'>Import</a></li>\n  </ul>\n\n  <div class=\'fb-tab-content\'>\n    ' +
+__p += '<div class=\'fb-left\'>\n  <ul class=\'fb-tabs\'>\n    <li class=\'active\'><a data-target=\'#addField\'>+Field</a></li>\n    <li><a data-target=\'#editField\'>Edit</a></li>\n    <li><a data-target=\'#importPersona\'>Import</a></li>\n    <li><a data-target=\'#templates\'>Templates</a></li>\n  </ul>\n\n  <div class=\'fb-tab-content\'>\n    ' +
 ((__t = ( Formbuilder.templates['partials/add_field']() )) == null ? '' : __t) +
 '\n    ' +
 ((__t = ( Formbuilder.templates['partials/edit_field']() )) == null ? '' : __t) +
 '\n    ' +
 ((__t = ( Formbuilder.templates['partials/import_persona']() )) == null ? '' : __t) +
+'\n    ' +
+((__t = ( Formbuilder.templates['partials/templates']() )) == null ? '' : __t) +
 '\n  </div>\n</div>\n';
 
 }
@@ -1279,6 +1281,16 @@ with (obj) {
 __p += '<div class=\'fb-save-wrapper\'>\n  <button class=\'js-save-form ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 '\'></button>\n</div>\n';
+
+}
+return __p
+};
+
+this["Formbuilder"]["templates"]["partials/templates"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class=\'fb-tab-pane\' id=\'templates\'>\n<div class=\'fb-templates-wrapper\'>\n    <h5>Instead of starting from scratch, you can browse the app templates below, and choose one to kickstart your custom app from</h5>\n    <hr/>\n    <div id="template-entries">\n    </div>\n</div>\n</div>\n';
 
 }
 return __p

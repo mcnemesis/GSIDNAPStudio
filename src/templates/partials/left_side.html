@@ -3,11 +3,13 @@
     <li class='active'><a data-target='#addField'>+Field</a></li>
     <li><a data-target='#editField'>Edit</a></li>
     <li><a data-target='#importPersona'>Import</a></li>
+    <li><a data-target='#templates'>Templates</a></li>
   </ul>
 
   <div class='fb-tab-content'>
     <%= Formbuilder.templates['partials/add_field']() %>
     <%= Formbuilder.templates['partials/edit_field']() %>
     <%= Formbuilder.templates['partials/import_persona']() %>
+    <%= Formbuilder.templates['partials/templates']() %>
   </div>
 </div>
