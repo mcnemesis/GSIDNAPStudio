@@ -273,6 +273,9 @@
                             console.log(data)
                             try{
                                 var persona = (typeof data === 'string' || data instanceof String) ? JSON.parse(data): data;
+                                if(query.t != undefined){
+                                 delete persona.app.uuid; // we don't want to override the default
+                                }
                                 init_fb(persona);
                                 $('#code').html('<span class="publish-status">The Studio has been bootstrapped with the specified persona. You can now proceed with modifying it as you wish...</span>');
                                 ga('send', 'event', 'App-Bootstrap', 'url', persona.app.name, 10);
@@ -298,6 +301,7 @@
                     url: 'https://theatre.nuchwezi.com/api/template/personas/',
                     //url: 'https://api.myjson.com/bins/13os2',
                     success: function(data){
+                        data = JSON.parse(data);
                         console.log(data);
                         var tholder = $('#template-entries');
                         $.each(data,function(i,t){
