@@ -298,7 +298,7 @@
 
             $(document).on('ready',function(){
                 $.ajax ({
-                    url: 'https://theatre.nuchwezi.com/api/template/personas/',
+                    url: 'https://theatre.nuchwezi.com/api/template/personas/?t=' + (new Date()).toISOString(),
                     //url: 'https://api.myjson.com/bins/13os2',
                     success: function(data){
                         data = JSON.parse(data);
