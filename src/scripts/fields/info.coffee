@@ -13,7 +13,7 @@ Formbuilder.registerField 'show_info',
     <div class='fb-edit-section-header'>Label</div>
     <input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />
     <textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'
-      placeholder='Add a longer description to this field'></textarea>
+      placeholder='Add the actual content to display here'></textarea>
   """
 
   addButton: """
