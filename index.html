@@ -100,7 +100,7 @@
                         selector: '.fb-main',
                     });
                     $('#app-color').spectrum();
-                    $('#theatre-uri').val('https://theatre.nuchwezi.com/api/act/create/').attr({'title': 'Your data will be hosted by us by default, but you can point to your own servers'});
+                    $('#theatre-uri').val('https://chwezi.tech/api/act/create/').attr({'title': 'Your data will be hosted by us by default, but you can point to your own servers'});
                     $('#transport-mode').val('POST');
                 }
 
@@ -114,7 +114,7 @@
 
                       $('#code').html('<span class="publish-status">Wait as this persona is published...</span>');
                         $.ajax({
-                          url: 'https://theatre.nuchwezi.com/api/persona/create/',
+                          url: 'https://chwezi.tech/api/persona/create/',
                           type: 'POST',
                           data: payload,
                           contentType: "application/json",
@@ -299,7 +299,7 @@
 
             $(document).on('ready',function(){
                 $.ajax ({
-                    url: 'https://theatre.nuchwezi.com/api/template/personas/?t=' + (new Date()).toISOString(),
+                    url: 'https://chwezi.tech/api/template/personas/?t=' + (new Date()).toISOString(),
                     //url: 'https://api.myjson.com/bins/13os2',
                     success: function(data){
                         data = JSON.parse(data);
