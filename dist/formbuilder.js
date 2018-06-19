@@ -41,7 +41,7 @@
 }).call(this);
 
 (function() {
-  var BuilderView, EditFieldView, Formbuilder, FormbuilderCollection, FormbuilderModel, ViewFieldView, _ref, _ref1, _ref2, _ref3, _ref4,
+  var BuilderView, EditFieldView, Formbuilder, FormbuilderCollection, FormbuilderModel, ViewFieldView, idMap, _ref, _ref1, _ref2, _ref3, _ref4,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -72,6 +72,8 @@
 
   })(Backbone.DeepModel);
 
+  idMap = new Set();
+
   FormbuilderCollection = (function(_super) {
     __extends(FormbuilderCollection, _super);
 
@@ -91,7 +93,14 @@
     };
 
     FormbuilderCollection.prototype.copyCidToModel = function(model) {
-      return model.attributes.cid = model.cid;
+      if (idMap.has(model.cid)) {
+        model.attributes.cid = model.cid.replace("c", "c" + idMap.size);
+        idMap.add(model.attributes.cid);
+      } else {
+        model.attributes.cid = model.cid;
+        idMap.add(model.cid);
+      }
+      return console.log(idMap);
     };
 
     return FormbuilderCollection;
@@ -581,6 +590,7 @@
         attrs[Formbuilder.options.mappings.LABEL] = 'Untitled';
         attrs[Formbuilder.options.mappings.FIELD_TYPE] = field_type;
         attrs[Formbuilder.options.mappings.REQUIRED] = true;
+        attrs[Formbuilder.options.mappings.PATTERN] = '';
         attrs['field_options'] = {};
         return (typeof (_base = Formbuilder.fields[field_type]).defaultAttributes === "function" ? _base.defaultAttributes(attrs) : void 0) || attrs;
       },
@@ -622,7 +632,8 @@
         MAX: 'field_options.max',
         MINLENGTH: 'field_options.minlength',
         MAXLENGTH: 'field_options.maxlength',
-        LENGTH_UNITS: 'field_options.min_max_length_units'
+        LENGTH_UNITS: 'field_options.min_max_length_units',
+        PATTERN: 'pattern'
       },
       dict: {
         ALL_CHANGES_SAVED: 'All changes saved',
@@ -992,7 +1003,9 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'fb-edit-section-header\'>Label</div>\n\n<div class=\'fb-common-wrapper\'>\n  <div class=\'fb-label-description\'>\n    ' +
 ((__t = ( Formbuilder.templates['edit/label_description']() )) == null ? '' : __t) +
-'\n  </div>\n  <div class=\'fb-common-checkboxes\'>\n    ' +
+'\n  </div>\n\n<div class=\'fb-edit-section-header\'>Validation Pattern</div>\n  <div class=\'fb-pattern\'>\n    ' +
+((__t = ( Formbuilder.templates['edit/pattern']() )) == null ? '' : __t) +
+'\n  </div>\n\n<div class=\'fb-edit-section-header\'>Extras...</div>\n  <div class=\'fb-common-checkboxes\'>\n    ' +
 ((__t = ( Formbuilder.templates['edit/checkboxes']() )) == null ? '' : __t) +
 '\n  </div>\n  <div class=\'fb-clear\'></div>\n</div>\n';
 
@@ -1020,7 +1033,7 @@ __p += '<input type=\'text\' data-rv-input=\'model.' +
 ((__t = ( Formbuilder.options.mappings.LABEL )) == null ? '' : __t) +
 '\' />\n<textarea data-rv-input=\'model.' +
 ((__t = ( Formbuilder.options.mappings.DESCRIPTION )) == null ? '' : __t) +
-'\'\n  placeholder=\'Add a longer description to this field\'></textarea>';
+'\'\n  placeholder=\'Add a longer description to this field\'></textarea>\n';
 
 }
 return __p
@@ -1094,6 +1107,18 @@ __p += '\n  <label>\n    <input type=\'checkbox\' data-rv-checked=\'model.' +
 __p += '\n\n<div class=\'fb-bottom-add\'>\n  <a class="js-add-option ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 '">Add option</a>\n</div>\n';
+
+}
+return __p
+};
+
+this["Formbuilder"]["templates"]["edit/pattern"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<input type=\'text\' data-rv-input=\'model.' +
+((__t = ( Formbuilder.options.mappings.PATTERN )) == null ? '' : __t) +
+'\' />\n';
 
 }
 return __p

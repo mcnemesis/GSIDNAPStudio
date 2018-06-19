@@ -7,6 +7,10 @@ class FormbuilderModel extends Backbone.DeepModel
     Formbuilder.inputFields[@get(Formbuilder.options.mappings.FIELD_TYPE)]?
 
 
+# global: to hold the unique field ids, so we avoid collisions
+#idMap = new Set(["c2","c3","c4","c5","c6"])
+idMap = new Set()
+
 class FormbuilderCollection extends Backbone.Collection
   initialize: ->
     @on 'add', @copyCidToModel
@@ -17,7 +21,13 @@ class FormbuilderCollection extends Backbone.Collection
     model.indexInDOM()
 
   copyCidToModel: (model) ->
-    model.attributes.cid = model.cid
+    if idMap.has model.cid
+        model.attributes.cid = model.cid.replace "c", ("c" + idMap.size)
+        idMap.add model.attributes.cid
+    else
+        model.attributes.cid = model.cid
+        idMap.add model.cid
+    console.log idMap
 
 
 class ViewFieldView extends Backbone.View
@@ -387,6 +397,7 @@ class Formbuilder
       attrs[Formbuilder.options.mappings.LABEL] = 'Untitled'
       attrs[Formbuilder.options.mappings.FIELD_TYPE] = field_type
       attrs[Formbuilder.options.mappings.REQUIRED] = true
+      attrs[Formbuilder.options.mappings.PATTERN] = ''
       attrs['field_options'] = {}
       Formbuilder.fields[field_type].defaultAttributes?(attrs) || attrs
 
@@ -428,6 +439,7 @@ class Formbuilder
       MINLENGTH: 'field_options.minlength'
       MAXLENGTH: 'field_options.maxlength'
       LENGTH_UNITS: 'field_options.min_max_length_units'
+      PATTERN: 'pattern'
 
     dict:
       ALL_CHANGES_SAVED: 'All changes saved'
