@@ -40,6 +40,7 @@
         <script src="vendor/js/FileSaver.js"></script>
         <script src="vendor/js/Blob.js"></script>
         <script src="vendor/js/spectrum.js"></script>
+        <script src="vendor/js/randomColor.min.js"></script>
         <script src="dist/formbuilder.js"></script>
 
         <script>
@@ -100,6 +101,7 @@
                         selector: '.fb-main',
                     });
                     $('#app-color').spectrum();
+                    $('#app-color').spectrum('set', randomColor() );
                     $('#theatre-uri').val('https://chwezi.tech/api/act/create/').attr({'title': 'Your data will be hosted by us by default, but you can point to your own servers'});
                     $('#transport-mode').val('POST');
                 }
