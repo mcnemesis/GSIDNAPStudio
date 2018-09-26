@@ -947,6 +947,17 @@
 
 }).call(this);
 
+(function() {
+  Formbuilder.registerField('show_video', {
+    order: 5,
+    type: 'non_input',
+    view: "    <label class='section-name'><%= rf.get(Formbuilder.options.mappings.LABEL) %></label>\n    <p>\n <video width=\"100%\" height=\"200px\" autoplay muted loop>\n		<source src=\"<%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %>\" type=\"video/mp4\" class='section-image'  />\n</video>\n\n    </p>",
+    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n<textarea placeholder='Paste URL to Video'></textarea>",
+    addButton: "<span class='symbol'><span class='fa fa-youtube'></span></span> Show Video"
+  });
+
+}).call(this);
+
 this["Formbuilder"] = this["Formbuilder"] || {};
 this["Formbuilder"]["templates"] = this["Formbuilder"]["templates"] || {};
 
