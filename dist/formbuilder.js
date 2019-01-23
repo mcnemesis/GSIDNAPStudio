@@ -903,6 +903,17 @@
 }).call(this);
 
 (function() {
+  Formbuilder.registerField('show_url', {
+    order: 0,
+    type: 'non_input',
+    view: "<label class='section-name'><%= rf.get(Formbuilder.options.mappings.LABEL) %></label>\n<p><%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %></p>",
+    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add the URL here'></textarea>",
+    addButton: "<span class='symbol'><span class='fa fa-link'></span></span> Show URL"
+  });
+
+}).call(this);
+
+(function() {
   Formbuilder.registerField('text', {
     order: 0,
     view: "<input type='text' class='rf-size-<%= rf.get(Formbuilder.options.mappings.SIZE) %>' />",
