@@ -1,0 +1,1 @@
+source nenv/bin/activate

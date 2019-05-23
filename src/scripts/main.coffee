@@ -8,7 +8,6 @@ class FormbuilderModel extends Backbone.DeepModel
 
 
 # global: to hold the unique field ids, so we avoid collisions
-#idMap = new Set(["c2","c3","c4","c5","c6"])
 idMap = new Set()
 
 class FormbuilderCollection extends Backbone.Collection
@@ -398,6 +397,7 @@ class Formbuilder
       attrs[Formbuilder.options.mappings.FIELD_TYPE] = field_type
       attrs[Formbuilder.options.mappings.REQUIRED] = true
       attrs[Formbuilder.options.mappings.PATTERN] = ''
+      attrs[Formbuilder.options.mappings.META] = ''
       attrs['field_options'] = {}
       Formbuilder.fields[field_type].defaultAttributes?(attrs) || attrs
 
@@ -440,6 +440,7 @@ class Formbuilder
       MAXLENGTH: 'field_options.maxlength'
       LENGTH_UNITS: 'field_options.min_max_length_units'
       PATTERN: 'pattern'
+      META: 'meta'
 
     dict:
       ALL_CHANGES_SAVED: 'All changes saved'
