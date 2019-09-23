@@ -18,24 +18,27 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-coffee": "~0.7.0",
-    "grunt-contrib-cssmin": "~0.6.2",
-    "grunt-contrib-jst": "~0.5.1",
-    "grunt-contrib-stylus": "~0.9.0",
-    "grunt-contrib-uglify": "~0.2.5",
-    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "^1.0.4",
     "grunt-contrib-clean": "~0.4.0",
-    "grunt-release": "~0.6.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-jst": "^1.0.0",
+    "grunt-contrib-stylus": "^1.2.0",
+    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-contrib-watch": "^1.1.0",
     "grunt-karma": "~0.6.2",
-    "karma": "~0.10.4",
-    "mocha": "~1.13.0",
-    "karma-mocha": "~0.1.0",
-    "karma-safari-launcher": "~0.1.1",
+    "grunt-release": "^0.14.0",
+    "karma": "^4.1.0",
     "karma-chrome-launcher": "~0.1.0",
+    "karma-coffee-preprocessor": "~0.1.0",
     "karma-firefox-launcher": "~0.1.0",
-    "karma-phantomjs-launcher": "~0.1.0",
-    "karma-coffee-preprocessor": "~0.1.0"
+    "karma-mocha": "~0.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-safari-launcher": "~0.1.1",
+    "mocha": "^6.1.4"
+  },
+  "dependencies": {
+    "bower": "^1.8.8"
   }
 }
