@@ -21,7 +21,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-release')
-  grunt.loadNpmTasks('grunt-karma')
+  #grunt.loadNpmTasks('grunt-karma')
 
   grunt.initConfig
 
