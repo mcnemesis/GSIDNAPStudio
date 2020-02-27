@@ -426,6 +426,7 @@ class Formbuilder
       UNITS: 'field_options.units'
       MIME_TYPE: 'field_options.mime_type'
       LABEL: 'label'
+      CID: 'cid'
       FIELD_TYPE: 'field_type'
       REQUIRED: 'required'
       ADMIN_ONLY: 'admin_only'

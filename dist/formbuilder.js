@@ -621,6 +621,7 @@
         UNITS: 'field_options.units',
         MIME_TYPE: 'field_options.mime_type',
         LABEL: 'label',
+        CID: 'cid',
         FIELD_TYPE: 'field_type',
         REQUIRED: 'required',
         ADMIN_ONLY: 'admin_only',
@@ -1477,7 +1478,9 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<label>\n  <span>' +
+__p += '<label>\n  <span>\n      <span><span class="cid">' +
+((__t = ( Formbuilder.helpers.simple_format(rf.get(Formbuilder.options.mappings.CID)) )) == null ? '' : __t) +
+':</span>\n      ' +
 ((__t = ( Formbuilder.helpers.simple_format(rf.get(Formbuilder.options.mappings.LABEL)) )) == null ? '' : __t) +
 '\n  ';
  if (rf.get(Formbuilder.options.mappings.REQUIRED)) { ;
