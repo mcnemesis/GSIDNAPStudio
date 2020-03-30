@@ -5,8 +5,6 @@ Formbuilder.registerField 'show_url',
   type: 'non_input'
 
   view: """
-    <label class='section-name'><%= rf.get(Formbuilder.options.mappings.LABEL) %></label>
-    <p><%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %></p>
   """
 
   edit: """

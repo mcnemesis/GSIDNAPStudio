@@ -5,7 +5,6 @@ Formbuilder.registerField 'show_video',
   type: 'non_input'
 
   view: """
-    <label class='section-name'><%= rf.get(Formbuilder.options.mappings.LABEL) %></label>
     <p>
 		 <video width="100%" height="200px" autoplay muted loop>
 				<source src="<%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %>" type="video/mp4" class='section-image'  />

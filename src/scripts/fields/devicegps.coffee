@@ -4,7 +4,6 @@ Formbuilder.registerField 'devicegps',
   type: 'non_input'
 
   view: """
-    <label class='section-name'><%= rf.get(Formbuilder.options.mappings.LABEL) %></label>
     <div class="stub-device-id" >
    <img
    style="width:100px;height:auto;"

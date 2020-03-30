@@ -5,7 +5,6 @@ Formbuilder.registerField 'play_audio',
   type: 'non_input'
 
   view: """
-    <label class='section-name'><%= rf.get(Formbuilder.options.mappings.LABEL) %></label>
     <p>
 		 <audio controls autoplay loop>
 				<source src="<%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %>" class='section-image'  />
