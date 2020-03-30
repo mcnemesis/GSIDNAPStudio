@@ -1,4 +1,4 @@
-Formbuilder.registerField 'show_url',
+Formbuilder.registerField 'show_website',
 
   order: 0
 
@@ -11,9 +11,9 @@ Formbuilder.registerField 'show_url',
     <div class='fb-edit-section-header'>Label</div>
     <input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />
     <textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'
-      placeholder='Add the Link URL here'></textarea>
+      placeholder='Add the Website URL here'></textarea>
   """
 
   addButton: """
-    <span class='symbol'><span class='fa fa-link'></span></span> Show LINK
+    <span class='symbol'><span class='fa fa-globe'></span></span> Show Webpage
   """
