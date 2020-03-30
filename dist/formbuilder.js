@@ -921,8 +921,19 @@
     order: 0,
     type: 'non_input',
     view: "",
-    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add the URL here'></textarea>",
-    addButton: "<span class='symbol'><span class='fa fa-link'></span></span> Show URL"
+    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add the Link URL here'></textarea>",
+    addButton: "<span class='symbol'><span class='fa fa-link'></span></span> Show LINK"
+  });
+
+}).call(this);
+
+(function() {
+  Formbuilder.registerField('show_website', {
+    order: 0,
+    type: 'non_input',
+    view: "",
+    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add the Website URL here'></textarea>",
+    addButton: "<span class='symbol'><span class='fa fa-globe'></span></span> Show Webpage"
   });
 
 }).call(this);
@@ -1434,7 +1445,7 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class=\'subtemplate-wrapper\'>\n  <div class=\'cover\'></div>\n  ' +
-((__t = ( Formbuilder.templates['view/label']({rf: rf}) )) == null ? '' : __t) +
+((__t = ( Formbuilder.templates['view/label_non_input']({rf: rf}) )) == null ? '' : __t) +
 '\n  ' +
 ((__t = ( Formbuilder.templates['view/description']({rf: rf}) )) == null ? '' : __t) +
 '\n  ' +
@@ -1486,6 +1497,20 @@ __p += '<div class=\'actions-wrapper\'>\n  <a class="js-duplicate ' +
 '" title="Duplicate Field"><i class=\'fa fa-plus-circle\'></i></a>\n  <a class="js-clear ' +
 ((__t = ( Formbuilder.options.BUTTON_CLASS )) == null ? '' : __t) +
 '" title="Remove Field"><i class=\'fa fa-minus-circle\'></i></a>\n</div>';
+
+}
+return __p
+};
+
+this["Formbuilder"]["templates"]["view/label_non_input"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<label>\n  <span>\n      <span><span class="cid">' +
+((__t = ( Formbuilder.helpers.simple_format(rf.get(Formbuilder.options.mappings.CID)) )) == null ? '' : __t) +
+':</span>\n      ' +
+((__t = ( Formbuilder.helpers.simple_format(rf.get(Formbuilder.options.mappings.LABEL)) )) == null ? '' : __t) +
+'\n</label>\n';
 
 }
 return __p
