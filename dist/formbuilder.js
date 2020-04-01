@@ -829,7 +829,7 @@
   Formbuilder.registerField('show_image', {
     order: 0,
     type: 'non_input',
-    view: "",
+    view: "<p><img src='<%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %>' class='section-image' /></p>",
     edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Paste URL to Image'></textarea>",
     addButton: "<span class='symbol'><span class='fa fa-picture-o'></span></span> Show Image"
   });

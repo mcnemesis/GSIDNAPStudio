@@ -5,6 +5,7 @@ Formbuilder.registerField 'show_image',
   type: 'non_input'
 
   view: """
+   <p><img src='<%= rf.get(Formbuilder.options.mappings.DESCRIPTION) %>' class='section-image' /></p>
   """
 
   edit: """
