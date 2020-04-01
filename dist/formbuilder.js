@@ -922,7 +922,7 @@
     type: 'non_input',
     view: "",
     edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add the Link URL here'></textarea>",
-    addButton: "<span class='symbol'><span class='fa fa-link'></span></span> Show LINK"
+    addButton: "<span class='symbol'><span class='fa fa-link'></span></span> Render LINK"
   });
 
 }).call(this);
@@ -932,7 +932,7 @@
     order: 0,
     type: 'non_input',
     view: "",
-    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add the Website URL here'></textarea>",
+    edit: "<div class='fb-edit-section-header'>Label</div>\n<input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />\n<textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'\n  placeholder='Add the Web resource URL here'></textarea>",
     addButton: "<span class='symbol'><span class='fa fa-globe'></span></span> Show Webpage"
   });
 
