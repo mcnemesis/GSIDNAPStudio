@@ -15,5 +15,5 @@ Formbuilder.registerField 'show_url',
   """
 
   addButton: """
-    <span class='symbol'><span class='fa fa-link'></span></span> Show LINK
+    <span class='symbol'><span class='fa fa-link'></span></span> Render LINK
   """

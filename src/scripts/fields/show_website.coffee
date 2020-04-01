@@ -11,7 +11,7 @@ Formbuilder.registerField 'show_website',
     <div class='fb-edit-section-header'>Label</div>
     <input type='text' data-rv-input='model.<%= Formbuilder.options.mappings.LABEL %>' />
     <textarea data-rv-input='model.<%= Formbuilder.options.mappings.DESCRIPTION %>'
-      placeholder='Add the Website URL here'></textarea>
+      placeholder='Add the Web resource URL here'></textarea>
   """
 
   addButton: """
