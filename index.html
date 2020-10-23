@@ -160,7 +160,7 @@
                                 }catch(e){}
                           },
                           error: function(){
-                              $('#code').html('<span class="publish-failed">Publishing of this persona failed. Ensure that this studio has access to persona publishing facility, such as a theatre. Contact tech[at]nuchwezi[dot]com, for access to a reliable, first-class theatre implementation, or get access to the entire suite of technologies in Project-Okot.</span>');
+                              $('#code').html('<span class="publish-failed">Publishing of this persona failed. Ensure that this studio has access to persona publishing facility, such as a theatre. Contact tech[at]nuchwezi[dot]com, for access to a reliable, first-class theatre implementation, or get access to the entire suite of technologies on the DNAP.</span>');
                                 try{
                                     var persona = JSON.parse(payload);
                                     ga('send', 'event', 'App-Publish-Failure', 'error', persona.app.name, -5);
