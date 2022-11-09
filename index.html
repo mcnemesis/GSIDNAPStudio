@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>The DNAP Studio</title>
+        <title>The GSI DNAP Studio</title>
         <meta name="description" content="">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css" />
@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="dist/formbuilder.css" />
     </head>
     <body>
-        <header><a href="." style="text-decoration:none;"><span class="logo"></span></a>  <h1>DNAP Studio | <small>reference implementation of a Persona IDE</small></h1></header>
+        <header><a href="." style="text-decoration:none;"><span class="logo"></span></a>  <h1>GSI DNAP Studio | <small>GSI applets IDE</small></h1></header>
         <article>
             <div class='fb-main'></div>
         </article>
@@ -17,18 +17,15 @@
             <table>
                 <tr>
                     <td>
-						<p>Hi there! Welcome to the official reference implementation of a DNAP Studio. The Studio is an Integrated Development Environment (IDE) for Personas - apps built using Cwa Script. If you already know how to use this tool - <b>The DNAP Studio</b>, then please proceed as you wish. Otherwise, if you need to learn how to use this or have inquiries about the technology, visit our docs or contact us here - <a target="_blank" href="https://chwezi.tech/dna/">CHWEZI.TECH</a></p>
                         <!-- p>  Learn more about 
-                        <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Studio">The Studio</a>,
-                        <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Histrion">Histrion</a>, 
-                        <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/#Theatre">Theatre</a>,
-                        and Diviner, that are all part of the cutting-edge nu data & cloud technology platform called 
-                        <a target="_blank" href="https://nuscribes.com/scribes_app/book/40/read/?#chapter-500">Project Okot (P'Okot)</a> - another up-to-date solution for businesses and individuals, brought to you by the NuChwezi Labs
                         </p -->
                     </td>
-                    <td>
-                        <a target="_blank" href="https://nuchwezi.com">
+                    <td style="background: azure; border-radius: 3px;">
+                        <!-- a target="_blank" href="https://nuchwezi.com">
                             <span class="logo-nuchwezi"></span>
+                        </a -->
+                        <a target="_blank" href="https://kyabirwasc.org">
+                            <img src="https://i.postimg.cc/J4ftrrKT/output-onlinepngtools.png" style="height:100px" />
                         </a>
                     </td>
                 </tr>
@@ -103,7 +100,7 @@
                     });
                     $('#app-color').spectrum();
                     $('#app-color').spectrum('set', randomColor() );
-                    $('#theatre-uri').val('https://chwezi.tech/api/act/create/').attr({'title': 'Your data will be hosted by us by default, but you can point to your own servers'});
+                    $('#theatre-uri').val('https://applets.kyabirwasc.org/api/act/create/').attr({'title': 'Your data will be hosted by us by default, but you can point to your own servers'});
                     $('#transport-mode').val('POST');
                 }
 
@@ -117,7 +114,7 @@
 
                       $('#code').html('<span class="publish-status">Wait as this persona is published...</span>');
                         $.ajax({
-                          url: 'https://chwezi.tech/api/persona/create/',
+                          url: 'https://applets.kyabirwasc.org/api/persona/create/',
                           type: 'POST',
                           data: payload,
                           contentType: "application/json",
@@ -302,7 +299,7 @@
 
             $(document).on('ready',function(){
                 $.ajax ({
-                    url: 'https://chwezi.tech/api/template/personas/?t=' + (new Date()).toISOString(),
+                    url: 'https://applets.kyabirwasc.org/api/template/personas/?t=' + (new Date()).toISOString(),
                     //url: 'https://api.myjson.com/bins/13os2',
                     success: function(data){
                         data = JSON.parse(data);
